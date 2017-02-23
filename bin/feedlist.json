@@ -148,5 +148,45 @@
 		"name": "The Morning Paper",
 		"db_table": "themorningpaper",
 		"url": "http://blog.acolyer.org/feed/"
+    },
+    "devops_taiwan_kktix": {
+        "name": "DevOps Taiwan KKTIX",
+        "db_table": "devops_taiwan_kktix",
+        "url": "http://devops.kktix.cc/events.atom"
+    },
+    "gcpug_taiwan_kktix": {
+        "name": "GCPUG Taiwan KKTIX",
+        "db_table": "gcpug_taiwan_kktix",
+        "url": "http://gcpugtw.kktix.cc/events.atom"
+    },
+    "gdg_taipei_kktix": {
+        "name": "GDG Taipei KKTIX",
+        "db_table": "gdg_taipei_kktix",
+        "url": "http://gdg-taipei.kktix.cc/events.atom"
+    },
+    "golang_taiwan_kktix": {
+        "name": "Golang Taiwan KKITX",
+        "db_table": "golang_taiwan_kktix",
+        "url": "http://golang.kktix.cc/events.atom"
+    },
+    "taipei_py_meetup": {
+        "name": "Taipei.py Meetup",
+        "db_table": "taipei_py_meetup",
+        "url": "https://www.meetup.com/Taipei-py/events/atom/"
+    },
+    "pycon_taiwan_kktix": {
+        "name": "PyCon Taiwan KKTIX",
+        "db_table": "pycon_taiwan_kktix",
+        "url": "http://pycontw.kktix.cc/events.atom"
+    },
+    "hitcon_kktix": {
+        "name": "HITCON KKTIX",
+        "db_table": "hitcon_kktix",
+        "url": "http://hitcon.kktix.cc/events.atom"
+    },
+    "sitcon_kktix": {
+        "name": "SITCON KKTIX",
+        "db_table": "sitcon_kktix",
+        "url": "http://sitcon.kktix.cc/events.atom"
     }
 }

@@ -5,9 +5,10 @@ from configparser import SafeConfigParser
 import json
 
 from feedr.monitor import MonitorFeedUpdate
+from feedr.dbmanager import DatabaseManager, USER_SUBSCRIPTIONS_TABLE_NAME
+
 
 if __name__ == "__main__":
-
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         "config",
@@ -31,6 +32,8 @@ if __name__ == "__main__":
     consumer_key = configparser['twitter']['consumer_key']
     consumer_secret = configparser['twitter']['consumer_secret']
     sqlite_db = configparser['sqlite']['db_path']
+
+    DatabaseManager(sqlite_db, USER_SUBSCRIPTIONS_TABLE_NAME)
 
     for i, feed in enumerate(sorted(feedlist.keys()), 1):
         print('({}/{}) {}'.format(i, len(feedlist), feedlist[feed]['name']))

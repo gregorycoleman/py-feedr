@@ -1,6 +1,9 @@
 import sqlite3
 
 
+USER_SUBSCRIPTIONS_TABLE_NAME = 'user_subscriptions'
+
+
 class DatabaseManager(object):
 
     '''
@@ -28,9 +31,31 @@ class DatabaseManager(object):
         if c.fetchall() == []:  # table doesn't exist
             # ! WARNING : Vulnerable to SQLi with forged table name
             # Ugly workaround for binding a table name
-            c.execute(
-                'CREATE table {}(id integer primary key autoincrement, sha256_hash text, date text, title text, url text)'.
-                format(self.feed_dbtable))
+            if self.feed_dbtable == USER_SUBSCRIPTIONS_TABLE_NAME:
+                c.execute(
+                    (
+                        'CREATE table {}'
+                        '(id integer primary key autoincrement, '
+                        'user_id text, '
+                        'feed_table_name text)'
+                    ).format(
+                        self.feed_dbtable,
+                    )
+                )
+            else:
+                # feed table
+                c.execute(
+                    (
+                        'CREATE table {}'
+                        '(id integer primary key autoincrement, '
+                        'sha256_hash text, '
+                        'date text, '
+                        'title text, '
+                        'url text)'
+                    ).format(
+                        self.feed_dbtable,
+                    )
+                )
         conn.commit()
         conn.close()
 
@@ -122,3 +147,30 @@ class DatabaseManager(object):
             conn.commit()
             conn.close()
             return False
+
+    def get_feed_subscribed_users(self):
+        '''
+        Return ids of user who subscribed this feed_dbtable.
+        '''
+
+        conn = sqlite3.connect(self.sqlite_db)
+        c = conn.cursor()
+
+        try:
+            # ! WARNING : Vulnerable to SQLi with forged table name
+            # Ugly workaround for binding a table name
+            c.execute(
+                'SELECT user_id FROM {} WHERE feed_table_name=?'.format(
+                    USER_SUBSCRIPTIONS_TABLE_NAME
+                ),
+                (self.feed_dbtable,)
+            )
+        except IndexError:  # empty table
+            users = []
+        else:
+            users = c.fetchall()[0]
+        finally:
+            conn.commit()
+            conn.close()
+
+        return users
