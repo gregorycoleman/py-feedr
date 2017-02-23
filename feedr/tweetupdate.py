@@ -233,3 +233,6 @@ class TweetUpdate(object):
             self.tweet_with_no_media()
         except:
             traceback.print_exc()
+
+    def send_dm(self, user_id=None, text=''):
+        self.twitter_api.direct_messages.new(user=user_id, text=text)
