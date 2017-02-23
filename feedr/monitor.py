@@ -94,7 +94,10 @@ class MonitorFeedUpdate(object):
                           self.get_latest_entry_date(),
                       ))
                 self.dbmanager.create_latest_rss_entry(
-                    self.latest_rss_entry_to_db())
+                    self.latest_rss_entry_to_db()
+                )
+
+                self.send_dm_to_feed_subscribed_users()
 
     def is_duplicate_update(self):
         '''
@@ -148,3 +151,12 @@ class MonitorFeedUpdate(object):
                   self.latest_entry['link'])
 
         return update
+
+    def send_dm_to_feed_subscribed_users(self):
+        msg = "{}\n{}".format(
+            self.latest_entry['title'],
+            self.latest_entry['link'],
+        )
+        for user in self.feed_subscribed_users:
+            self.tweetupdate.send_dm(user, msg)
+            print('sent dm to {}:\n{}'.format(user, msg))
