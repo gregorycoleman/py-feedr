@@ -165,10 +165,10 @@ class DatabaseManager(object):
                 ),
                 (self.feed_dbtable,)
             )
+
+            users = c.fetchall()[0]
         except IndexError:  # empty table
             users = []
-        else:
-            users = c.fetchall()[0]
         finally:
             conn.commit()
             conn.close()
