@@ -29,6 +29,7 @@ class MonitorFeedUpdate(object):
         self.feed_name = feed_name
         self.feed = feedparser.parse(feed_url)
         self.latest_entry = None
+        self.feed_subscribed_users = None
 
         # DatabaseManager object
         self.dbmanager = DatabaseManager(sqlite_db, feed_dbtable)
@@ -54,6 +55,8 @@ class MonitorFeedUpdate(object):
            tweet_latest_update method is called. Logs.
          * No new update: does nothing, logs.
         '''
+
+        self.feed_subscribed_users = self.dbmanager.get_feed_subscribed_users()
 
         for entry in reversed(self.feed.entries):
             # use reverse for iterating from oldest to latest feed

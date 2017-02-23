@@ -147,3 +147,30 @@ class DatabaseManager(object):
             conn.commit()
             conn.close()
             return False
+
+    def get_feed_subscribed_users(self):
+        '''
+        Return ids of user who subscribed this feed_dbtable.
+        '''
+
+        conn = sqlite3.connect(self.sqlite_db)
+        c = conn.cursor()
+
+        try:
+            # ! WARNING : Vulnerable to SQLi with forged table name
+            # Ugly workaround for binding a table name
+            c.execute(
+                'SELECT user_id FROM {} WHERE feed_table_name=?'.format(
+                    USER_SUBSCRIPTIONS_TABLE_NAME
+                ),
+                (self.feed_dbtable,)
+            )
+        except IndexError:  # empty table
+            users = []
+        else:
+            users = c.fetchall()[0]
+        finally:
+            conn.commit()
+            conn.close()
+
+        return users
