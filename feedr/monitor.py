@@ -83,21 +83,26 @@ class MonitorFeedUpdate(object):
                             localtime_log,
                             entry_table_hash))
 
-                self.tweetupdate.tweet_latest_update(self.latest_entry)
-                self.tweetupdate.reset_msg()
-                print('[{0}] - {1} - New update posted: {2}\n'
-                      '[{0}] - {1} - Update title: {3}\n'
-                      '[{0}] - {1} - Published: {4}\n'.format(
-                          self.feed_name, localtime_log,
-                          self.rss_latest_sha256()[:10],
-                          self.latest_entry['title'],
-                          self.get_latest_entry_date(),
-                      ))
-                self.dbmanager.create_latest_rss_entry(
-                    self.latest_rss_entry_to_db()
-                )
-
-                self.send_dm_to_feed_subscribed_users()
+                try:
+                    self.tweetupdate.tweet_latest_update(self.latest_entry)
+                    self.tweetupdate.reset_msg()
+                    self.send_dm_to_feed_subscribed_users()
+                except Exception as e:
+                    print('Error while sending tweet: {}'.format(e))
+                else:
+                    print('[{0}] - {1} - New update posted: {2}\n'
+                          '[{0}] - {1} - Update title: {3}\n'
+                          '[{0}] - {1} - Published: {4}\n'.format(
+                              self.feed_name, localtime_log,
+                              self.rss_latest_sha256()[:10],
+                              self.latest_entry['title'],
+                              self.get_latest_entry_date(),
+                          ))
+                finally:
+                    self.dbmanager.create_latest_rss_entry(
+                        self.latest_rss_entry_to_db()
+                    )
+                    print("Entry updated into database.")
 
     def is_duplicate_update(self):
         '''
