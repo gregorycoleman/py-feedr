@@ -166,9 +166,11 @@ class DatabaseManager(object):
                 (self.feed_dbtable,)
             )
 
-            users = c.fetchall()[0]
+            users = c.fetchall()
         except IndexError:  # empty table
             users = []
+        else:
+            users = [user_tuple[0] for user_tuple in users]
         finally:
             conn.commit()
             conn.close()
