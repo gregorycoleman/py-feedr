@@ -175,4 +175,7 @@ class DatabaseManager(object):
             conn.commit()
             conn.close()
 
+        print('table_name: {}'.format(self.feed_dbtable))
+        print('subscribed_users: {}'.format(users))
+
         return users
