@@ -193,5 +193,10 @@
         "name": "Skymizer KKTIX (Cat System Workshop)",
         "db_table": "skymizer_kktix",
         "url": "http://skymizer.kktix.cc/events.atom"
+    },
+    "facebook_developer_circle_taipei_kktix": {
+        "name": "Facebook Developer Circle: Taipei KKTIX",
+        "db_table": "facebook_developer_circle_taipei_kktix",
+        "url": "https://fdctaipei.kktix.cc/events.atom"
     }
 }
