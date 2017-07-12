@@ -17,6 +17,10 @@ class TweetUpdate(object):
     update has been handled by the MonitorFeedUpdate object.
     '''
 
+    URLS_OF_IMAGES_NO_NEED_TO_UPLOAD_TO_TWITTER = (
+        "https://a.fsdn.com/sd/twitter_icon_large.png",
+    )
+
     def __init__(self, oauth_key, oauth_secret, consumer_key, consumer_secret):
         '''
         Initializes a Twitter object from the twitter module, using the given
@@ -75,6 +79,9 @@ class TweetUpdate(object):
                 netloc=urllib.parse.quote(img_url_splited.netloc),
                 path=urllib.parse.quote(img_url_splited.path),
             ).geturl()
+
+            if img_url in self.URLS_OF_IMAGES_NO_NEED_TO_UPLOAD_TO_TWITTER:
+                return None
             return img_url
 
     def msg_to_string(self):
