@@ -27,10 +27,16 @@ if __name__ == "__main__":
     feedlist_location = configparser['feeds']['feedlist']
     with open(feedlist_location) as f:
         feedlist = json.load(f)
+    try:
+        feed_parse_timeout = float(configparser['feeds']['timeout'])
+    except:
+        feed_parse_timeout = None
+
     oauth_key = configparser['twitter']['oauth_key']
     oauth_secret = configparser['twitter']['oauth_secret']
     consumer_key = configparser['twitter']['consumer_key']
     consumer_secret = configparser['twitter']['consumer_secret']
+
     sqlite_db = configparser['sqlite']['db_path']
 
     DatabaseManager(sqlite_db, USER_SUBSCRIPTIONS_TABLE_NAME)
@@ -39,11 +45,12 @@ if __name__ == "__main__":
         print('({}/{}) {}'.format(i, len(feedlist), feedlist[feed]['name']))
         MonitorFeedUpdate(
             feedlist[feed]['name'],
+            feed_parse_timeout,
             feedlist[feed]['url'],
             sqlite_db,
             feedlist[feed]['db_table'],
             oauth_key,
             oauth_secret,
             consumer_key,
-            consumer_secret
+            consumer_secret,
         ).monitor()

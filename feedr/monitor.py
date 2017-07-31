@@ -1,6 +1,7 @@
 import difflib
 import feedparser
 import hashlib
+import socket
 import time
 
 from feedr.dbmanager import DatabaseManager
@@ -16,7 +17,7 @@ class MonitorFeedUpdate(object):
     the database.
     '''
 
-    def __init__(self, feed_name, feed_url,
+    def __init__(self, feed_name, feed_parse_timeout, feed_url,
                  sqlite_db, feed_dbtable,
                  oauth_key, oauth_secret, consumer_key, consumer_secret):
         '''
@@ -27,6 +28,7 @@ class MonitorFeedUpdate(object):
 
         # RSS feed
         self.feed_name = feed_name
+        socket.setdefaulttimeout(feed_parse_timeout)
         self.feed = feedparser.parse(feed_url)
         self.latest_entry = None
         self.feed_subscribed_users = None
