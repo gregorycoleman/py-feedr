@@ -198,5 +198,10 @@
         "name": "Facebook Developer Circle: Taipei KKTIX",
         "db_table": "facebook_developer_circle_taipei_kktix",
         "url": "https://fdctaipei.kktix.cc/events.atom"
+    },
+    "softnshare": {
+        "name": "Soft & Share",
+        "db_table": "softnshare",
+        "url": "https://softnshare.wordpress.com/feed/"
     }
 }
