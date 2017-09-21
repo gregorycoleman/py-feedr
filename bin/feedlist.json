@@ -203,5 +203,10 @@
         "name": "Soft & Share",
         "db_table": "softnshare",
         "url": "https://softnshare.wordpress.com/category/01-notes/feed/"
+    },
+    "freecodecamp": {
+        "name": "freeCodeCamp",
+        "db_table": "freecodecamp",
+        "url": "https://medium.freecodecamp.org/feed/"
     }
 }
