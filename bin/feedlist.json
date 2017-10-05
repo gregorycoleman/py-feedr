@@ -208,5 +208,10 @@
         "name": "freeCodeCamp",
         "db_table": "freecodecamp",
         "url": "https://medium.freecodecamp.org/feed/"
+    },
+    "cyber_rangers_tw_kktix": {
+        "name": "CyberRangersTW",
+        "db_table": "cyber_rangers_tw",
+        "url": "https://cyberrangers.kktix.cc/events.atom"
     }
 }
