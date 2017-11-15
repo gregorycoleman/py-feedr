@@ -215,7 +215,7 @@
         "url": "https://cyberrangers.kktix.cc/events.atom"
     },
     "cs_arxiv": {
-        "name": "cs updates on arXiv.org",
+        "name": "arXiv.org",
         "db_table": "cs_arxiv",
         "url": "http://export.arxiv.org/rss/cs"
     }
