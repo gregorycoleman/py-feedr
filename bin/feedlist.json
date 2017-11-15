@@ -218,5 +218,10 @@
         "name": "arXiv.org",
         "db_table": "cs_arxiv",
         "url": "http://export.arxiv.org/rss/cs"
+    },
+    "hackernoon": {
+        "name": "HACKERNOON",
+        "db_table": "hackernoon",
+        "url": "https://hackernoon.com/feed"
     }
 }
