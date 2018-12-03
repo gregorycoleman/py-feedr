@@ -107,7 +107,7 @@ class TweetUpdate(object):
 
         TWEET_URL_LENGTH = 24
         TWEET_IMG_LENGTH = 25
-        msg_limit_length = 140
+        msg_limit_length = 280
 
         try:
             url = feed_entry['link']
