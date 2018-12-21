@@ -223,5 +223,10 @@
         "name": "HACKERNOON",
         "db_table": "hackernoon",
         "url": "https://hackernoon.com/feed"
+    },
+    "blocktempo": {
+        "name": "BLOCKTEMPO",
+        "db_table": "blocktempo",
+        "url": "https://www.blocktempo.com/feed/"
     }
 }
