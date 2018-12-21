@@ -165,5 +165,6 @@ class MonitorFeedUpdate(object):
             self.latest_entry['link'],
         )
         for user in self.feed_subscribed_users:
+            print('Prepare to send dm to {}'.format(user))
             self.tweetupdate.send_dm(user, msg)
             print('sent dm to {}:\n{}'.format(user, msg))
