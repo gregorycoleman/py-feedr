@@ -154,20 +154,20 @@
         "db_table": "devops_taiwan_kktix",
         "url": "http://devops.kktix.cc/events.atom"
     },
-    "gcpug_taiwan_kktix": {
-        "name": "GCPUG Taiwan KKTIX",
-        "db_table": "gcpug_taiwan_kktix",
-        "url": "http://gcpugtw.kktix.cc/events.atom"
+    "gcpug_taiwan_meetup": {
+        "name": "GCPUG Taiwan Meetup",
+        "db_table": "gcpug_taiwan_meetup",
+        "url": "https://www.meetup.com/GCPUG-Taipei/events/atom/"
     },
-    "gdg_taipei_kktix": {
-        "name": "GDG Taipei KKTIX",
-        "db_table": "gdg_taipei_kktix",
-        "url": "http://gdg-taipei.kktix.cc/events.atom"
+    "gdg_taipei_meetup": {
+        "name": "GDG Taipei Meetup",
+        "db_table": "gdg_taipei_meetup",
+        "url": "https://www.meetup.com/GDGTaipei/events/atom/"
     },
-    "golang_taiwan_kktix": {
-        "name": "Golang Taiwan KKITX",
-        "db_table": "golang_taiwan_kktix",
-        "url": "http://golang.kktix.cc/events.atom"
+    "golang_taiwan_meetup": {
+        "name": "Golang Taiwan Meetup",
+        "db_table": "golang_taiwan_meetup",
+        "url": "https://www.meetup.com/golang-taipei-meetup/events/atom/"
     },
     "taipei_py_meetup": {
         "name": "Taipei.py Meetup",
