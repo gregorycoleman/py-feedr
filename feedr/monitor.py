@@ -63,7 +63,14 @@ class MonitorFeedUpdate(object):
         for entry in reversed(self.feed.entries):
             # use reverse for iterating from oldest to latest feed
             self.latest_entry = entry
-            unchecked_hash = (self.rss_latest_sha256(),)
+
+            try:
+                unchecked_hash = (self.rss_latest_sha256(),)
+            except Exception as e:
+                print('Get unchecked_hash error: {}'.format(e))
+                print('latest_entry: {}'.format(self.latest_entry))
+                continue
+
             check = self.dbmanager.check_for_existing_update(unchecked_hash)
             localtime_log = time.strftime(
                 "%d %b %Y - %H:%M:%S", time.localtime())
