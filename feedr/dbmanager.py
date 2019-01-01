@@ -1,3 +1,4 @@
+import datetime
 import sqlite3
 
 
@@ -72,6 +73,11 @@ class DatabaseManager(object):
         c = conn.cursor()
 
         table = self.feed_dbtable
+
+        # Set default value of 'date' to utcnow str.
+        # This won't affect the sha256_hash, which is used to determinate existing entry in check_for_existing_update()
+        if update[1] == '':
+            update[1] = str(datetime.datetime.utcnow())
 
         # ! WARNING : Vulnerable to SQLi with forged table name
         # Ugly workaround for binding a table name
