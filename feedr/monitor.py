@@ -3,6 +3,7 @@ import feedparser
 import hashlib
 import socket
 import time
+from operator import attrgetter
 
 from feedr.dbmanager import DatabaseManager
 from feedr.tweetupdate import TweetUpdate
@@ -60,8 +61,18 @@ class MonitorFeedUpdate(object):
 
         self.feed_subscribed_users = self.dbmanager.get_feed_subscribed_users()
 
-        for entry in reversed(self.feed.entries):
-            # use reverse for iterating from oldest to latest feed
+        # filter empty entries
+        true_entries = filter(bool, self.feed.entries)
+        # sort entries from old to new by published_parsed which done by feedparser
+        try:
+            old_to_new_published_entries = sorted(true_entries, key=attrgetter('published_parsed'))
+        except AttributeError:
+            # if no 'published_parsed' attribute for current RSS feed, use default order.
+            old_to_new_published_entries = list(true_entries)
+        except Exception as e:
+            raise
+
+        for entry in old_to_new_published_entries:
             self.latest_entry = entry
 
             try:
