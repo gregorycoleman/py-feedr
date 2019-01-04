@@ -228,5 +228,10 @@
         "name": "BLOCKTEMPO",
         "db_table": "blocktempo",
         "url": "https://www.blocktempo.com/feed/"
+    },
+    "dev.to": {
+        "name": "DEV.TO",
+        "db_table": "dev_to",
+        "url": "https://dev.to/feed"
     }
 }
