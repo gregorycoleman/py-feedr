@@ -7,7 +7,7 @@ setup(
     name='py-feedr',
     packages=['feedr'],
     scripts=['bin/feedr'],
-    install_requires=['beautifulsoup4', 'feedparser', 'twitter'],
+    install_requires=['beautifulsoup4==4.6.0', 'feedparser==5.2.1', 'twitter==1.18.0'],
     version='0.1b3',
     description='A Python parser to tweet the latest updates from multiple RSS feeds.',
     long_description=README,
