@@ -69,6 +69,9 @@ class MonitorFeedUpdate(object):
         except AttributeError:
             # if no 'published_parsed' attribute for current RSS feed, use default order.
             old_to_new_published_entries = list(true_entries)
+        except TypeError:
+            # if any entry.published_parsed is None, use default order.
+            old_to_new_published_entries = list(true_entries)
         except Exception as e:
             raise
 
