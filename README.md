@@ -68,7 +68,7 @@ positional arguments:
 ```  
   
 You can setup a cron job that runs every minute if you need to call feedr regularly:  
-`*/1 * * * * /usr/bin/bash -c "/usr/bin/python3 /home/feedr/feedr cfg.ini" >> /home/feedr/feedr.log 2>&1`  
+`*/1 * * * * /usr/bin/bash -c "/usr/bin/python3 ${FEEDR_DIR}/bin/feedr ${FEEDR_DIR}/bin/feedr.ini" >> /home/feedr/feedr.log 2>&1`  
   
 ### License  
 -----------  
