@@ -241,5 +241,20 @@ class TweetUpdate(object):
         except:
             traceback.print_exc()
 
-    def send_dm(self, user_id=None, text=''):
-        self.twitter_api.direct_messages.new(user=user_id, text=text)
+    def send_dm(self, user_screen_name=None, text=''):
+        user_id = self.twitter_api.users.show(screen_name=user_screen_name)["id"]
+        self.twitter_api.direct_messages.events.new(
+            _json={
+                "event": {
+                    "type": "message_create",
+                    "message_create": {
+                        "target": {
+                            "recipient_id": user_id
+                        },
+                        "message_data": {
+                            "text": text
+                        }
+                    }
+                }
+            }
+        )
