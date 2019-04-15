@@ -126,6 +126,7 @@ class MonitorFeedUpdate(object):
                         self.latest_rss_entry_to_db()
                     )
                     print("Entry updated into database.")
+        time.sleep(1)
 
     def is_duplicate_update(self):
         '''
