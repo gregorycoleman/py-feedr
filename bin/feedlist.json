@@ -233,5 +233,10 @@
         "name": "DEV.TO",
         "db_table": "dev_to",
         "url": "https://dev.to/feed"
+    },
+    "trello_status": {
+        "name": "Trello Status",
+        "db_table": "trello_status",
+        "url": "https://trello.status.atlassian.com/history.atom"
     }
 }
