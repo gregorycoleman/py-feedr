@@ -238,5 +238,10 @@
         "name": "Trello Status",
         "db_table": "trello_status",
         "url": "https://trello.status.atlassian.com/history.atom"
+    },
+    "every_little_d": {
+        "name": "every little d.",
+        "db_table": "every_little_d",
+        "url": "http://feeds.feedburner.com/EveryLittleD"
     }
 }
