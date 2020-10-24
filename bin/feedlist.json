@@ -24,11 +24,6 @@
         "db_table": "cve",
         "url": "https://nvd.nist.gov/download/nvd-rss.xml"
     },
-    "freebuf": {
-        "name": "FreeBuf.COM | 关注黑客与极客",
-        "db_table": "freebuf",
-        "url": "http://www.freebuf.com/feed"
-    },
     "lwn": {
         "name": "LWN.net",
         "db_table": "lwn",
