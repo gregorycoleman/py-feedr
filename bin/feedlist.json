@@ -238,5 +238,10 @@
         "name": "every little d.",
         "db_table": "every_little_d",
         "url": "http://feeds.feedburner.com/EveryLittleD"
+    },
+    "star_rocket": {
+        "name": "Star Rocket Blog",
+        "db_table": "star_rocket",
+        "url": "https://blog.starrocket.io/feed/"
     }
 }
