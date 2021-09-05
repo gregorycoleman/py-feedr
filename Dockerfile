@@ -10,10 +10,10 @@ RUN git clone https://github.com/gregorycoleman/py-feedr.git
 RUN pip3 install beautifulsoup4==4.6.0
 RUN pip3 install feedparser==5.2.1
 RUN pip3 install twitter==1.18.0
-RUN cd py-feedr
-RUN touch /app/py-feedr/README.rst
+RUN cd /app/py-feedr
+WORKDIR /app/py-feedr/
+RUN touch README.rst
 RUN python3 setup.py install
 
-# Run this
-
-# /usr/bin/python3 /app/py-feedr/bin/feedr cfg.ini
+# Run this , will be in /app/py-feedr/
+# python3 bin/feedr cfg.ini
